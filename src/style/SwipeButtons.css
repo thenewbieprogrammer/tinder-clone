@@ -12,26 +12,41 @@
 }
 
 .swipeButtons__relay {
-  padding: 3vw !important;
   color: #f5b748 !important;
+  height: 50px;
+  width: 50px;
+  padding: 3vw !important;
+  margin-top: 10px;
 }
 
 .swipeButtons__close {
+  height: 50px;
+  width: 50px;
   padding: 3vw !important;
+  margin-top: 10px;
   color: #ec5e6f !important;
 }
 
 .swipeButtons__star {
+  height: 50px;
+  width: 50px;
   padding: 3vw !important;
+  margin-top: 10px;
   color: #62b4f9 !important;
 }
 
 .swipeButtons__favourite {
+  height: 50px;
+  width: 50px;
   padding: 3vw !important;
+  margin-top: 10px;
   color: #76e2b3 !important;
 }
 
 .swipeButtons__flashOn {
+  height: 50px;
+  width: 50px;
   padding: 3vw !important;
+  margin-top: 10px;
   color: #915dd1 !important;
 }

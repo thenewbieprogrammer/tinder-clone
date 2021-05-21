@@ -1,18 +1,28 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import "../style/TinderPhotoCards.css";
 import TinderCard from 'react-tinder-card';
+import _axios from '../AxiosClient/_axios.js';
 
 function TinderPhotoCard() {
-  const [people, setPeople] = useState([
-    {
-      name: 'Elon Musk',
-      url: "https://static.theceomagazine.net/wp-content/uploads/2018/10/15093202/elon-musk.jpg"
-    },
-    {
-      name: 'Jeff Bezos',
-      url: "https://img.jakpost.net/c/2020/02/18/2020_02_18_86871_1581998411._large.jpg"
+  const [people, setPeople] = useState([]);
+  
+  //useEffect is equivalent to ComponentDidMount
+  // the second parameter of useEffect '[]' is to tell the useEffect fn to run the entire code once ..
+  // not repeatedly 
+
+ // however if we pass in a variable into these '[]' of the useEffect fn; then whenever 
+ // that variable changes in value, the code in the useEffect hook will compute again
+
+  useEffect(() => {
+    async function fetchData() {
+      const req = await _axios.get("/tinder/cards");
+      setPeople(req.data);
     }
-  ]);
+    fetchData();
+  }, []);
+
+  //console.log(people);
+
   const swiped = (direction, personToDelete)=> {
     console.log("removing.. " + personToDelete);
 
@@ -33,7 +43,7 @@ function TinderPhotoCard() {
             onSwipe={(dir) => swiped(dir, person.name)}
             onCardLeftScreen={() => outOfFrame(person.name)}
           >
-            <div style={{backgroundImage: `url(${person.url})` }} className="tinderCard">
+            <div style={{backgroundImage: `url(${person.imageURL})` }} className="tinderCard">
               <h3>{person.name}</h3>
             </div>
 
